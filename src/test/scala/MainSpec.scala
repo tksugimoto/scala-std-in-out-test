@@ -21,16 +21,29 @@ class MainSpec extends WordSpecLike with Matchers {
 
   "Main" must {
     "1行Pattern" in {
-      val input = "1"
+      val input = "0"
+
+      val expectedOutput = ""
+
+      test(input, expectedOutput)
+    }
+
+    "入力のみ複数行Pattern" in {
+      val input =
+        """
+          |1
+          |1
+        """.stripMargin.trim
 
       val expectedOutput = "2"
 
       test(input, expectedOutput)
     }
 
-    "複数行Pattern" in {
+    "入力出力両方複数行Pattern" in {
       val input =
         """
+          |1
           |256
           |dummy
           |無視される
