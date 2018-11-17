@@ -15,7 +15,7 @@ class MainSpec extends WordSpecLike with Matchers {
       println("============== outputs ==============")
       println(output.toString)
 
-      output.toString.trim shouldEqual expectedOutput
+      output.toString.trim.replaceAllLiterally("\r", "") shouldEqual expectedOutput.replaceAllLiterally("\r", "")
     }
   }
 
@@ -52,6 +52,23 @@ class MainSpec extends WordSpecLike with Matchers {
       val expectedOutput =
         """
           |512
+        """.stripMargin.trim
+
+      test(input, expectedOutput)
+    }
+
+    "複数行出力Pattern" in {
+      val input =
+        """
+          |2
+          |123
+          |456
+        """.stripMargin.trim
+
+      val expectedOutput =
+        """
+          |246
+          |912
         """.stripMargin.trim
 
       test(input, expectedOutput)
