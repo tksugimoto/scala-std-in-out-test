@@ -15,7 +15,11 @@ class MainSpec extends WordSpecLike with Matchers {
       println("============== outputs ==============")
       println(output.toString)
 
-      output.toString.trim.replaceAllLiterally("\r", "") shouldEqual expectedOutput.replaceAllLiterally("\r", "")
+      val outputArray = output.toString.trim.split("[\r\n]+")
+      val expectedOutputArray = expectedOutput.split("[\r\n]+")
+      (outputArray zip expectedOutputArray).zipWithIndex foreach {
+        case ((result, expect), i) => assert(result == expect, s"(line ${i + 1})")
+      }
     }
   }
 
