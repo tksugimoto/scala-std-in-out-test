@@ -3,8 +3,12 @@ import java.io.{ByteArrayOutputStream, StringReader}
 import org.scalatest._
 
 class MainSpec extends WordSpecLike with Matchers {
+  var testCount = 0
 
   def test(input: String, expectedOutput: String): Unit = {
+    testCount += 1
+    println(s"-------------------- start($testCount) --------------------")
+
     val output = new ByteArrayOutputStream
 
     Console.withIn(new StringReader(input))  {
