@@ -15,15 +15,15 @@ class MainSpec extends WordSpecLike with Matchers {
       Console.withOut(output) {
         Main.main(Array())
       }
+    }
 
-      println("============== outputs ==============")
-      println(output.toString)
+    println("============== outputs ==============")
+    println(output.toString)
 
-      val outputArray = output.toString.trim.split("[\r\n]+")
-      val expectedOutputArray = expectedOutput.split("[\r\n]+")
-      (outputArray zip expectedOutputArray).zipWithIndex foreach {
-        case ((result, expect), i) => assert(result == expect, s"(line ${i + 1})")
-      }
+    val outputArray = output.toString.trim.split("[\r\n]+")
+    val expectedOutputArray = expectedOutput.split("[\r\n]+")
+    (outputArray zip expectedOutputArray).zipWithIndex foreach {
+      case ((result, expect), i) => assert(result == expect, s"(line ${i + 1})")
     }
   }
 
