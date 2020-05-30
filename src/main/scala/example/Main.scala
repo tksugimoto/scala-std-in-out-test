@@ -1,3 +1,5 @@
+package example
+
 object Main extends App {
   import scala.io.StdIn._
   val n = readInt()

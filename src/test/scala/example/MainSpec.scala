@@ -1,3 +1,5 @@
+package example
+
 import java.io.{ByteArrayOutputStream, StringReader}
 
 import org.scalatest._
